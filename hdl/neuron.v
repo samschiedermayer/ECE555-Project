@@ -1,7 +1,6 @@
 module neuron(
     input [1:0] x0, x1,
-    input [1:0] w0, w1,
-    input [3:0] w2,
+    input [1:0] w0, w1, w2,
     output [1:0] out
 );
 
@@ -15,8 +14,8 @@ mult imult_1(.x(x0), .w(w0), .y(mult1_out));
 mult imult_2(.x(x1), .w(w1), .y(mult2_out));
 
 // Adders
-adder iadder_1(.A(mult1_out), .B(mult2_out), .C(1'b0), .S(adder1_out));
-adder iadder_2(.A(adder1_out), .B(w2), .C(1'b0), .S(adder2_out));
+adder iadder_1(.A(mult1_out), .B(mult2_out), .Sum(adder1_out));
+adder iadder_2(.A(adder1_out), .B({2'b00,w2}),.Sum(adder2_out));
 
 // Multiplexer
 not (not_d_3, adder2_out[3]);
