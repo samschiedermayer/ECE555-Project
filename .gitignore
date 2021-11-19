@@ -1,1 +1,6 @@
 work/
+hdl/transcript
+hdl/work/
+*.bak
+*.mti
+*.mpf

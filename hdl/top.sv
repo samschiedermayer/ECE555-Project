@@ -6,7 +6,7 @@ module top(
 );
 
 // Implementation of an MLP module
-wire [3:0] y0, y1;
+wire [1:0] y0, y1;
 
 // Neuron 0
 neuron n0(.x0(x0), .x1(x1), .w0(w00), .w1(w10), .w2(w20), .out(y0));
