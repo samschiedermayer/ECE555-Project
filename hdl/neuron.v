@@ -9,13 +9,13 @@ wire [3:0] mult1_out, mult2_out;
 wire [3:0] adder1_out, adder2_out;
 wire not_d_3;
 
-// Multiplexers
+// Multipliers
 mult imult_1(.x(x0), .w(w0), .y(mult1_out));
 mult imult_2(.x(x1), .w(w1), .y(mult2_out));
 
 // Adders
 adder iadder_1(.A(mult1_out), .B(mult2_out), .Sum(adder1_out));
-adder iadder_2(.A(adder1_out), .B({2'b00,w2}),.Sum(adder2_out));
+adder iadder_2(.A(adder1_out), .B({{2{w2[1]}},w2}),.Sum(adder2_out));
 
 // Multiplexer
 not (not_d_3, adder2_out[3]);
