@@ -4,52 +4,55 @@ module mult(
   output wire [3:0] y
 );
 
-// intermediate sum signal
-wire [2:0] s;
+// intermediate signals
+wire [3:0] s;
+wire [3:0] w_ext;
+assign w_ext = {{2{w[1]}},w[1:0]};
 
 // adder BEGIN
-wire s_nand;
 
-assign s[0] = w[0];
+//s[0]
+assign s[0] = 1'b0;
 
-xor(s[1],w[0],w[1]);
-nand(s_nand,w[0],w[1]);
-not(s[2],s_nand);
+//s[1]
+wire x00, n00, n01, n02;
+
+xor(x00,w_ext[0],w_ext[1]);
+xor(s[1],x00,w_ext[0]); //s
+
+nand(n00,w_ext[0],w_ext[1]);
+nand(n01,x00,w_ext[0]);
+nand(n02,n00,n01); //cout
+
+//s[2]
+wire x10, n10, n11, n12;
+
+xor(x10,w_ext[1],w_ext[2]);
+xor(s[2],x10,n02); //s
+
+nand(n10,w_ext[1],w_ext[2]);
+nand(n11,x10,n02);
+nand(n12,n10,n11); //cout
+
+//s[3]
+wire x20;
+
+xor(x20,w_ext[2],w_ext[3]);
+xor(s[3],x20,n12); //s
 
 // adder END
 
 
 // mux BEGIN
-wire i0, i1;
 
-not (i0,x[0]);
-not (i1,x[1]);
+wire [3:0] mux_upper, mux_lower;
 
-// y[0]
-wire nand00, nand01;
+assign mux_upper = (x[0]) ? s     : {w_ext[2:0],1'b0};
+assign mux_lower = (x[0]) ? w_ext : 4'b0000;
 
-nand(nand00,    x[0],    i1,   w[0]);
-nand(nand01,    x[0],  x[1],   s[0]);
-nand(  y[0], nand00, nand01);
-
-// y[1]
-wire nand10, nand11, nand12;
-
-nand(nand10,   x[0],    i1,   w[1]);
-nand(nand11,     i0,  x[1],   w[0]);
-nand(nand12,   x[0],  x[1],   s[1]);
-nand(  y[1], nand10, nand11, nand12);
-
-// y[3:2]
-wire nand20, nor20;
-
-nor ( nor20,   x[0],  x[1],   w[0]);
-nand(nand20,   x[0],  x[1],   s[0]);
-nand(  y[2],  nor20, nand20);
-assign y[3] = y[2];
+assign y = (x[1]) ? mux_upper : mux_lower;
 
 // mux END
-
 
 endmodule
 
