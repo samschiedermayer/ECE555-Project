@@ -4,3 +4,5 @@ hdl/work/
 *.bak
 *.mti
 *.mpf
+*.log
+*.log.*
