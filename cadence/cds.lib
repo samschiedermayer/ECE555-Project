@@ -1,0 +1,2 @@
+SOFTINCLUDE /cae/apps/data/cadence-2021/installs/IC618/share/cdssetup/cds.lib
+DEFINE ECE555 ./ECE555
