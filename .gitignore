@@ -7,3 +7,4 @@ hdl/work/
 *.log
 *.log.*
 cadence/.cadence
+cadence/.cadence/*
