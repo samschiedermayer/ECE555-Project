@@ -51,17 +51,17 @@ test_combination(2'b00,2'b11,2'b11);
 test_combination(2'b01,2'b00,2'b00);
 test_combination(2'b01,2'b01,2'b00);
 test_combination(2'b01,2'b10,2'b00);
-test_combination(2'b01,2'b00,2'b00);
+test_combination(2'b01,2'b11,2'b00);
 
 test_combination(2'b10,2'b00,2'b00);
 test_combination(2'b10,2'b01,2'b00);
 test_combination(2'b10,2'b10,2'b00);
-test_combination(2'b10,2'b00,2'b00);
+test_combination(2'b10,2'b11,2'b00);
 
 test_combination(2'b11,2'b00,2'b00);
 test_combination(2'b11,2'b01,2'b00);
 test_combination(2'b11,2'b10,2'b00);
-test_combination(2'b11,2'b00,2'b00);
+test_combination(2'b11,2'b11,2'b00);
 
 if (tb_err === 0)
   $display("Yahoo! All tests passed :)");
