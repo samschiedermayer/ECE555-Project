@@ -1,13 +1,13 @@
 simulator( 'spectre )
-design( "/filespace/s/sschiedermay/cadence/simulation/top_tb/spectre/schematic/netlist/netlist")
-resultsDir( "/filespace/s/sschiedermay/cadence/simulation//spectre/schematic")
+design( "/filespace/j/jbybel/cadence/simulation/top_tb/spectre/schematic/netlist/netlist")
+resultsDir( "/filespace/j/jbybel/cadence/simulation//spectre/schematic")
 modelFile(
-    '("/filespace/s/sschiedermay/ece555/cadence/modelfile18" "")
+    '("/filespace/j/jbybel/ece555/cadence/modelfile18" "")
 )
 stimulusFile( ?xlate nil
-    "/filespace/s/sschiedermay/ece555/ECE555-Project/cadence/vectors.stim"
+    "/filespace/j/jbybel/ECE555/ECE555-Project/cadence/vectors.stim"
 )
-analysis('tran ?stop "22n" ?errpreset "moderate" )
+analysis('tran ?stop "18n" ?errpreset "moderate" )
 envOption(
 		'analysisOrder list("tran")
 		'switchViewList '( "spectre cmos_sch cmos.sch extracted schematic" )
