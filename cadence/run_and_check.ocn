@@ -1,0 +1,23 @@
+simulator( 'spectre )
+design( "/filespace/s/sschiedermay/cadence/simulation/top_tb/spectre/schematic/netlist/netlist")
+resultsDir( "/filespace/s/sschiedermay/cadence/simulation//spectre/schematic")
+modelFile(
+    '("/filespace/s/sschiedermay/ece555/cadence/modelfile18" "")
+)
+stimulusFile( ?xlate nil
+    "/filespace/s/sschiedermay/ece555/ECE555-Project/cadence/vectors.stim"
+)
+analysis('tran ?stop "22n" ?errpreset "moderate" )
+envOption(
+		'analysisOrder list("tran")
+		'switchViewList '( "spectre cmos_sch cmos.sch extracted schematic" )
+)
+save( 'v "/clk" "/out<3>" "/out<2>" "/out<1>" "/out<0>" )
+save( 'i "/V0/PLUS" )
+temp( 27 )
+createNetlist()
+run()
+selectResults("tran")
+ocnPrint(?output "cadence/simulation/sim_out.txt" ?precision 16 ?numberNotation `scientific v("/clk") v("/out<3>") v("/out<2>") v("/out<1>") v("/out<0>") i("/V0/PLUS") ?step 0.025n)
+id=ipcBeginProcess("~ejhoffman/perl_progs/check_res.pl top_tb")
+ipcWaitForChild(id)
