@@ -1,0 +1,4 @@
+T -1  in /in
+? Terminal in in the layout is not present in the schematic.
+T -1  out /out
+? Terminal out in the layout is not present in the schematic.
