@@ -1,0 +1,149 @@
+@(#)$CDS: LVS version 6.1.8-64b 04/27/2021 19:12 (cpgsrv11) $
+
+Command line: /cae/apps/data/cadence-2021/installs/IC618/tools.lnx86/dfII/bin/64bit/LVS -dir /filespace/j/jjwirth2/ece555/project/ECE555-Project/cadence/LVS -l -s -t /filespace/j/jjwirth2/ece555/project/ECE555-Project/cadence/LVS/layout /filespace/j/jjwirth2/ece555/project/ECE555-Project/cadence/LVS/schematic
+Like matching is enabled.
+Net swapping is enabled.
+Using terminal names as correspondence points.
+Compiling Diva LVS rules...
+
+    Net-list summary for /filespace/j/jjwirth2/ece555/project/ECE555-Project/cadence/LVS/layout/netlist
+       count
+        4               nets
+        4               terminals
+        1               pmos
+        1               nmos
+
+    Net-list summary for /filespace/j/jjwirth2/ece555/project/ECE555-Project/cadence/LVS/schematic/netlist
+       count
+        10              nets
+        8               terminals
+        8               pmos
+        7               nmos
+
+
+    Terminal correspondence points
+    N1        N0        vdd!
+    N0        N1        vss!
+
+Devices in the netlist but not in the rules:
+        pcapacitor
+Devices in the rules but not in the netlist:
+        cap nfet pfet nmos4 pmos4
+
+    Ill-defined correspondence points.
+
+	N0	N1  Accepted because one is a subset of the other
+	N1	N0  Accepted because one is a subset of the other
+	N1	N0  Accepted because one is a subset of the other
+	N0	N1  Accepted because one is a subset of the other
+
+
+        Device summary for layout
+                   bad  total
+            pmos     1      1
+            nmos     1      1
+
+
+        Device summary for schematic
+                   bad  total
+            pmos     8      8
+            nmos     7      7
+
+The net-lists failed to match.
+
+                             layout  schematic
+                                instances
+        un-matched              2       15     
+        rewired                 0       0      
+        size errors             0       0      
+        pruned                  0       0      
+        active                  2       15     
+        total                   2       15     
+
+                                  nets
+        un-matched              2       8      
+        merged                  0       0      
+        pruned                  0       0      
+        active                  4       10     
+        total                   4       10     
+
+                                terminals
+        un-matched              2       4      
+        matched but
+        different type          0       0      
+        total                   4       8      
+
+
+Probe files from /filespace/j/jjwirth2/ece555/project/ECE555-Project/cadence/LVS/schematic
+
+devbad.out:
+The no. of lines exceeded than specified by the variable lvsLimitLinesInOutFile.
+To see the complete information please see the file:
+/filespace/j/jjwirth2/ece555/project/ECE555-Project/cadence/LVS/schematic/devbad.out
+
+netbad.out:
+N /net2
+? Net does not cross-match. It has 4 connections.
+N /x<0>
+? Net does not cross-match. It has 4 connections.
+N /y<1>
+? Net does not cross-match. It has 4 connections.
+N /net1
+? Net does not cross-match. It has 4 connections.
+N /net4
+? Net does not cross-match. It has 6 connections.
+N /net3
+? Net does not cross-match. It has 6 connections.
+N /y<2>
+? Net does not cross-match. It has 3 connections.
+N /x<1>
+? Net does not cross-match. It has 5 connections.
+
+mergenet.out:
+
+termbad.out:
+T -1  x<0> /x<0>
+? Terminal x<0> in the schematic is not present in the layout.
+T -1  x<1> /x<1>
+? Terminal x<1> in the schematic is not present in the layout.
+T -1  y<1> /y<1>
+? Terminal y<1> in the schematic is not present in the layout.
+T -1  y<2> /y<2>
+? Terminal y<2> in the schematic is not present in the layout.
+? Terminal y<0> is floating in the schematic.
+? Terminal y<3> is floating in the schematic.
+
+prunenet.out:
+
+prunedev.out:
+
+audit.out:
+
+
+Probe files from /filespace/j/jjwirth2/ece555/project/ECE555-Project/cadence/LVS/layout
+
+devbad.out:
+I /+0
+? Device does not cross-match.
+I /+1
+? Device does not cross-match.
+
+netbad.out:
+N /out
+? Net does not cross-match. It has 2 connections.
+N /in
+? Net does not cross-match. It has 2 connections.
+
+mergenet.out:
+
+termbad.out:
+T -1  in /in
+? Terminal in in the layout is not present in the schematic.
+T -1  out /out
+? Terminal out in the layout is not present in the schematic.
+
+prunenet.out:
+
+prunedev.out:
+
+audit.out:
